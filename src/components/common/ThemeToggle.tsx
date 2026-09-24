@@ -11,7 +11,7 @@ interface ThemeToggleProps {
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -50,4 +50,3 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     </button>
   );
 }
-
