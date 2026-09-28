@@ -1,4 +1,5 @@
-import { ArrowDown, FileDown, Mail, User } from "lucide-react";
+import Link from "next/link";
+import { ArrowDown, FileDown, Mail, User, ArrowUpRight } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/common/Icons";
 import { Container } from "@/components/common/Container";
 import { Button } from "@/components/common/Button";
@@ -140,17 +141,23 @@ export function HeroSection() {
 
         {/* Engineering quick signals banner */}
         <div className="mt-16 pt-8 border-t border-zinc-200/80 dark:border-zinc-800/80 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="p-3 rounded-lg bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-200/60 dark:border-zinc-800/60">
-            <span className="block text-[11px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-              Flagship Project
-            </span>
-            <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          <Link
+            href="/projects/restaurant-ai"
+            className="group p-3 rounded-lg bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-200/60 dark:border-zinc-800/60 hover:border-sky-500/50 dark:hover:border-sky-500/50 hover:bg-sky-500/5 transition-all block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+          >
+            <div className="flex items-center justify-between">
+              <span className="block text-[11px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                Flagship Project
+              </span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-sky-500 transition-colors" />
+            </div>
+            <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
               Restaurant AI
             </span>
             <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-              Modular operations platform (FastAPI, MySQL)
+              Modular operations platform (FastAPI, MySQL) →
             </p>
-          </div>
+          </Link>
 
           <div className="p-3 rounded-lg bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-200/60 dark:border-zinc-800/60">
             <span className="block text-[11px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
