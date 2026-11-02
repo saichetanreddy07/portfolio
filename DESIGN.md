@@ -6,64 +6,63 @@ Recruiters should be able to identify Sai's focus, strongest projects, and conta
 
 ## Visual direction
 
-**Confident, athletic, precise.** The page takes cues from a refined player card and game HUD, with cricket as a quiet atmospheric thread. It should feel like a serious engineer's portfolio with a little personality—not corporate-generic, not neon-cyberpunk, and not a game interface pretending to be a portfolio.
+**Editorial, calm, premium, and personal.** The site adopts a refined editorial design system where large typography is the primary design element. It prioritizes left-aligned structure, generous whitespace, thin hairline dividers instead of heavy card containers, minimal borders, and zero decorative gradients or glowing effects.
 
-Use a dark ink canvas, warm amber for the main action, and restrained teal for secondary emphasis. A compact HUD-like navigation and small mono labels provide the game reference; generous spacing, clear project copy, and a strong typographic hierarchy keep the experience professional. The hero is the focal point. A single short typing line can provide the memorable moment, with a static equivalent and reduced-motion behavior. Cricket cues stay behind content: faint floodlight blooms, pitch/crease lines, and occasional seam geometry, all around 4–8% opacity.
+Use a dark ink canvas (`ink-950`), warm amber for the main action, and restrained teal for secondary metadata and mono cues. Compact navigation and small mono labels provide clear hierarchy; generous spacing, left-aligned layouts, clear copy, and large display headings keep the experience professional and uncrowded. No glassmorphism, no gradient overlays, no glowing blobs, and no oversized icons.
 
 ## Palette tokens
 
 | Token | Value | Use |
 |---|---|---|
-| `ink-950` | `#0B1012` | Main page background |
-| `ink-900` | `#11191B` | Raised sections and card surfaces |
-| `ink-800` | `#1B2729` | Hover/active surfaces and subtle pattern strokes |
-| `ink-700` | `#293739` | Borders and dividers |
-| `ink-500` | `#647477` | Borders and decoration only; never use for text |
+| `ink-950` | `#0B1012` | Main page background (unified canvas) |
+| `ink-900` | `#11191B` | Raised surfaces and subtle fills |
+| `ink-800` | `#1B2729` | Hairline dividers, subtle borders, active surfaces |
+| `ink-700` | `#293739` | Subtle structural borders |
+| `ink-500` | `#647477` | Metadata numerals and decorative lines; never for essential text |
 | `ink-300` | `#AAB7B5` | Secondary body text |
 | `ink-100` | `#E8EFEB` | Main text and headings |
-| `paper` | `#F7F5EE` | Warm neutral for occasional light surfaces |
+| `paper` | `#F7F5EE` | Warm neutral |
 | `amber-400` | `#F2B84B` | Primary accent, key highlights, primary CTA |
 | `amber-500` | `#D9982E` | Active/pressed primary accent |
-| `teal-300` | `#73C9BD` | Secondary accent, links, data cues |
+| `teal-300` | `#73C9BD` | Secondary accent, mono eyebrows, metadata |
 | `success` | `#8ED1A6` | Success status |
 | `warning` | `#F2B84B` | In-progress status |
 | `danger` | `#F28D7D` | Error status |
 
-Keep the overall balance near 60% dark canvas, 30% raised surfaces and neutral type, 10% accents. Amber and teal are reserved for actions, status, and meaningful highlights; avoid gradient text and broad decorative glows. Filled amber buttons use `ink-950` text. Use `ink-300` or brighter for all muted text; `ink-500` is restricted to borders and decoration. Check actual text and component contrast against WCAG AA before implementation.
+Keep the overall balance near 65% dark canvas, 25% quiet surfaces and neutral type, 10% accents. Amber and teal are reserved for actions, status, and meaningful highlights; avoid gradient text and broad decorative glows. Filled amber buttons use `ink-950` text. Use `ink-300` or brighter for all muted text; `ink-500` is restricted to borders and decoration. Check actual text and component contrast against WCAG AA before implementation.
 
 ## Typography
 
-Use three families with distinct roles:
+Typography is the primary visual element:
 
-- **Display/headings:** Space Grotesk, 600–700. Compact, slightly technical character for the name, section headings, and project titles.
-- **Body/UI:** Inter, 400–600. Clear reading at small sizes for project details, navigation, and buttons.
-- **Labels/data:** IBM Plex Mono, 500. Eyebrows, stat chips, project indices, and compact HUD details only.
-
-Load locally when practical, with `Arial`/system sans and `monospace` fallbacks. If web fonts are used, keep the set to these three families and avoid delaying first paint.
+- **Display/headings:** Space Grotesk, 600–700. Large, tight tracking (-0.04em) editorial headings with confident scale.
+- **Body/UI:** Inter, 400–600. Clear, open reading at small and medium sizes.
+- **Labels/data:** IBM Plex Mono, 500. Eyebrows, stat chips, and compact indices.
 
 | Token | Size / line height | Weight and use |
 |---|---|---|
 | `type-xs` | 12px / 16px | Mono metadata and tiny labels; do not use for essential body copy |
 | `type-sm` | 14px / 20px | Supporting labels and compact UI |
 | `type-base` | 16px / 26px | Body copy |
-| `type-lg` | 20px / 28px | Lead text and card summaries |
-| `type-xl` | 24px / 32px | Project titles and smaller section heads |
-| `type-2xl` | 32px / 40px | Section headings |
-| `type-3xl` | 48px / 1.05 | Hero name on compact desktop |
-| `type-4xl` | 64px / 1.0 | Hero name at wide viewport; scale fluidly down on mobile |
+| `type-lg` | 20px / 28px | Lead text and summaries |
+| `type-xl` | 24px / 32px | Sub-headings and smaller section heads |
+| `type-2xl` | 32px / 40px | Medium section headings |
+| `type-3xl` | 44px / 1.10 | Large section headings |
+| `type-4xl` | 56px / 1.05 | Prominent editorial headings |
+| `type-5xl` | 68px / 1.00 | Display titles |
 
-Use a fluid hero size equivalent to `clamp(2.5rem, 7vw, 4rem)`. Keep paragraphs around 60–75 characters wide and left-aligned.
+Use a fluid hero title equivalent to `clamp(2.75rem, 7.5vw, 5.25rem)` and fluid lead `clamp(1.25rem, 2.8vw, 2rem)`. Keep paragraphs around 60–68 characters wide and left-aligned.
 
 ## Layout and component tokens
 
-- **Spacing:** 4px base grid; use 4, 8, 12, 16, 24, 32, 48, 64, and 96px. Favor 24–32px within components and 64–96px between major sections.
-- **Content width:** 1200px maximum, centered; 24px page gutters on desktop and 16px on narrow mobile.
-- **Grid:** Projects use a balanced responsive grid; cards share a consistent collapsed height. Expanded details overlay the grid without moving neighboring cards.
-- **Radius:** 4px for controls/chips, 8px for cards, 12px for larger panels. Keep corners crisp rather than pill-shaped except for compact status chips.
-- **Borders:** 1px solid `ink-700`; use `amber-400` or `teal-300` only for focus and selected states.
-- **Shadows:** one restrained elevation shadow for overlay cards; avoid stacked shadows. Focus uses a visible 2px amber outline with offset.
-- **Motion:** 180ms ease-out for entering and 140ms ease-in for leaving; animate only transform and opacity. Expanded card may scale slightly and rise above neighbors. Reduced motion switches to a quick fade or no transition.
-- **Targets:** interactive hit areas at least 44×44px; navigation and all card expansion must work by keyboard and touch.
+- **Spacing:** 4px base grid; generous section pacing: `py-12 sm:py-16 lg:py-20` (compact), `py-20 sm:py-28 lg:py-32` (default), `py-28 sm:py-36 lg:py-40` (spacious).
+- **Content width:** 1200px maximum, centered with generous padding (`px-6 sm:px-8 lg:px-12`). All content left-aligned within containers.
+- **Dividers:** Thin 1px hairline dividers (`border-ink-800/80`) separating sections and items cleanly instead of heavy cards.
+- **Radius:** 2px for controls, 4px for cards, 6px for panels. Crisp and architectural rather than bubbly.
+- **Borders:** Minimal hairline borders (`border-ink-800/80`); amber outline for focus.
+- **Shadows:** Minimal / none (`--shadow-overlay: none`).
+- **Motion:** 180ms ease-out for entering and 140ms ease-in for leaving; animate only transform and opacity. Reduced motion switches to a quick fade or no transition.
+- **Targets:** interactive hit areas at least 44×44px; navigation and controls operable by keyboard and touch.
 
 ## Signature details and project themes
 

@@ -87,8 +87,8 @@ export function Navbar() {
   }, [mobileOpen])
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ink-700 bg-ink-950">
-      <div className="mx-auto flex w-full max-w-content flex-wrap items-center justify-between gap-x-6 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 border-b border-ink-800/80 bg-ink-950">
+      <div className="mx-auto flex w-full max-w-content flex-wrap items-center justify-between gap-x-6 px-6 sm:px-8 lg:px-12">
         <a
           className="flex min-h-16 shrink-0 items-center rounded-control font-display text-base font-semibold tracking-tight text-ink-100 focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 sm:text-lg"
           href="#home"
@@ -100,14 +100,14 @@ export function Navbar() {
 
         <button
           ref={menuButtonRef}
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-control border border-ink-700 text-ink-100 transition-[transform,opacity] duration-enter ease-enter active:translate-y-px hover:border-ink-300 focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 lg:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-control border border-ink-800 text-ink-300 transition-[border-color,color] duration-enter ease-enter active:translate-y-px hover:border-ink-500 hover:text-ink-100 focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 lg:hidden"
           type="button"
           aria-controls="primary-navigation"
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? siteText.closeMenuLabel : siteText.openMenuLabel}
           onClick={() => setMobileOpen((open) => !open)}
         >
-          <span className="flex w-4 flex-col gap-1" aria-hidden="true">
+          <span className="flex w-4 flex-col gap-1.5" aria-hidden="true">
             <span className={`h-px w-full bg-current transition-transform duration-enter ${mobileOpen ? 'translate-y-1 rotate-45' : ''}`} />
             <span className={`h-px w-full bg-current transition-transform duration-enter ${mobileOpen ? '-translate-y-1 -rotate-45' : ''}`} />
           </span>
@@ -116,7 +116,7 @@ export function Navbar() {
         <nav
           id="primary-navigation"
           aria-label={siteText.primaryNavigationLabel}
-          className={`${mobileOpen ? 'block' : 'hidden'} order-3 w-full border-t border-ink-700 py-3 lg:order-none lg:block lg:w-auto lg:border-0 lg:py-0`}
+          className={`${mobileOpen ? 'block' : 'hidden'} order-3 w-full border-t border-ink-800/80 py-4 lg:order-none lg:block lg:w-auto lg:border-0 lg:py-0`}
         >
           <ul className="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-2">
             {navigation.map((item) => {
@@ -127,18 +127,18 @@ export function Navbar() {
                   <a
                     href={item.href}
                     aria-current={isActive ? 'location' : undefined}
-                    className={`flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-medium transition-opacity duration-enter ease-enter hover:opacity-90 active:opacity-80 focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 ${
+                    className={`flex min-h-11 items-center gap-2 rounded-control px-3.5 text-sm font-medium transition-[background-color,color] duration-enter ease-enter focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 ${
                       isContact && isActive
                         ? 'border border-amber-400 bg-amber-400 text-ink-950'
                         : isContact
-                          ? 'border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-ink-950'
+                          ? 'border border-amber-400/80 text-amber-400 hover:bg-amber-400 hover:text-ink-950'
                           : isActive
-                            ? 'bg-ink-800 text-amber-400'
-                            : 'text-ink-300 hover:bg-ink-900 hover:text-ink-100'
+                            ? 'bg-ink-900 text-amber-400'
+                            : 'text-ink-300 hover:bg-ink-900/60 hover:text-ink-100'
                     }`}
                     onClick={closeMobileMenu}
                   >
-                    <span className="font-mono text-xs text-teal-300" aria-hidden="true">{item.index}</span>
+                    <span className="font-mono text-xs text-teal-300/80" aria-hidden="true">{item.index}</span>
                     {item.label}
                   </a>
                 </li>
