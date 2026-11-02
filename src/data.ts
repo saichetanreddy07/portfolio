@@ -40,23 +40,31 @@ export const footerText = {
 export const hero = {
   name: siteText.brandName,
   eyebrow: siteText.portfolioEyebrow,
-  tagline: '<TAGLINE>',
-  description: '<SHORT_DESCRIPTION>',
-  profileImage: '<PROFILE_IMAGE>',
+  tagline: 'AI Engineer | Machine Learning | Generative AI',
+  description:
+    'Recent B.Tech graduate in Computer Science (Artificial Intelligence) passionate about building intelligent applications using Machine Learning, Generative AI, and Data Analytics. I enjoy transforming complex problems into practical, scalable software solutions.',
   links: [
-    { label: 'GitHub', placeholder: '<GITHUB_URL>' },
-    { label: 'LinkedIn', placeholder: '<LINKEDIN_URL>' },
-    { label: 'Resume', placeholder: '<RESUME_URL>' },
+    { label: 'GitHub', href: 'https://github.com/saichetanreddy07', external: true },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-chetan-reddy-a18b4624b/', external: true },
+    {
+      label: 'Resume',
+      href: '/Sai_Chetan_Resume.pdf',
+      external: false,
+      download: 'Sai_Chetan_Resume.pdf',
+    },
   ],
 }
 
 export const about = {
-  eyebrow: '<ABOUT_EYEBROW>',
-  title: '<ABOUT_TITLE>',
-  paragraphs: ['<ABOUT_PARAGRAPH_1>', '<ABOUT_PARAGRAPH_2>'],
+  eyebrow: 'About Me',
+  title: 'Turning ideas into AI-powered applications.',
+  paragraphs: [
+    'I recently graduated with a B.Tech in Computer Science (Artificial Intelligence) from Manipal Institute of Technology, Bengaluru. My interests include Machine Learning, Generative AI, Data Engineering, and Backend Development.',
+    "I enjoy building projects that solve real-world problems while continuously improving my software engineering and AI skills. I'm currently seeking opportunities where I can contribute, learn, and grow as an AI Engineer.",
+  ],
   details: [
-    { label: '<ABOUT_DETAIL_LABEL_1>', value: '<ABOUT_DETAIL_VALUE_1>' },
-    { label: '<ABOUT_DETAIL_LABEL_2>', value: '<ABOUT_DETAIL_VALUE_2>' },
-    { label: '<ABOUT_DETAIL_LABEL_3>', value: '<ABOUT_DETAIL_VALUE_3>' },
+    { label: 'Location', value: 'Hyderabad, India' },
+    { label: 'Graduation', value: '2026' },
+    { label: 'Focus', value: 'AI / ML • Generative AI • Data Analytics' },
   ],
 }

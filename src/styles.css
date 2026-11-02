@@ -49,14 +49,6 @@ body { min-height: 100vh; }
     radial-gradient(ellipse at 84% 66%, rgb(var(--color-teal-300) / 6%), transparent 32%);
 }
 
-.hero-image-frame {
-  background-image:
-    linear-gradient(rgb(var(--color-ink-500) / 8%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--color-ink-500) / 8%) 1px, transparent 1px),
-    radial-gradient(ellipse at 50% 45%, rgb(var(--color-teal-300) / 8%), transparent 58%);
-  background-size: var(--pattern-grid-size) var(--pattern-grid-size), var(--pattern-grid-size) var(--pattern-grid-size), auto;
-}
-
 @media (max-width: 639px) {
   .hero-atmosphere { inset: 0 -45% 0 0; }
 }

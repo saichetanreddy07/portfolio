@@ -50,12 +50,9 @@ export default {
         'hero-copy': 'var(--hero-copy-width)',
         'hero-lead': 'var(--hero-lead-width)',
         'hero-links': 'var(--hero-links-width)',
-        portrait: 'var(--portrait-width)',
       },
       minHeight: { hero: 'var(--hero-min-height)' },
-      aspectRatio: { portrait: '4 / 5' },
       gridTemplateColumns: {
-        hero: 'var(--hero-columns)',
         about: 'var(--about-columns)',
       },
       letterSpacing: {
