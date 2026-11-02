@@ -3,7 +3,7 @@
 ## 1. Task
 Build a brand-new personal portfolio website from scratch.
 
-- Start clean: delete all existing source, assets, configs, and build output from any previous attempt (keep only `.git`). Do not reuse or refactor old code.
+- Start clean: delete all existing source, assets, configs, and build output from any previous attempt. Keep only .git, .agents/, AGENTS.md, and PORTFOLIO_BRIEF.md. Do not reuse or refactor old code.
 - Follow the `polished-frontend` guidelines for all UI work.
 
 ## 2. About the owner and audience
