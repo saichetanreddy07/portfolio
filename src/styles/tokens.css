@@ -1,0 +1,50 @@
+:root {
+  /* RGB channels allow Tailwind opacity modifiers to work with the palette. */
+  --color-ink-950: 11 16 18;
+  --color-ink-900: 17 25 27;
+  --color-ink-800: 27 39 41;
+  --color-ink-700: 41 55 57;
+  --color-ink-500: 100 116 119;
+  --color-ink-300: 170 183 181;
+  --color-ink-100: 232 239 235;
+  --color-paper: 247 245 238;
+  --color-amber-400: 242 184 75;
+  --color-amber-500: 217 152 46;
+  --color-teal-300: 115 201 189;
+  --color-success: 142 209 166;
+  --color-warning: 242 184 75;
+  --color-danger: 242 141 125;
+
+  --font-display: 'Space Grotesk Variable';
+  --font-body: 'Inter Variable';
+  --font-mono: 'IBM Plex Mono';
+
+  --content-width: 1200px;
+  --reading-width: 72ch;
+  --hero-copy-width: 43rem;
+  --hero-lead-width: 40rem;
+  --hero-links-width: 39rem;
+  --portrait-width: 24rem;
+  --header-height: 4rem;
+  --hero-min-height: min(48.75rem, calc(100svh - var(--header-height)));
+  --hero-title-size: clamp(2.5rem, 7vw, 4rem);
+  --hero-lead-size: clamp(1.5rem, 3.7vw, 2.5rem);
+  --hero-columns: minmax(0, 1.15fr) minmax(17.5rem, 0.85fr);
+  --about-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
+  --radius-control: 4px;
+  --radius-card: 8px;
+  --radius-panel: 12px;
+  --shadow-overlay: 0 18px 48px rgb(0 0 0 / 32%);
+  --motion-enter: 180ms;
+  --motion-leave: 140ms;
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --ease-leave: cubic-bezier(0.4, 0, 1, 1);
+  --tracking-hud: 0.16em;
+  --tracking-display: -0.055em;
+  --tracking-lead: -0.035em;
+  --tracking-detail: 0.12em;
+  --tracking-eyebrow: 0.14em;
+  --pattern-grid-size: 32px;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 4px;
+}

@@ -1,0 +1,73 @@
+@import './styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: var(--font-body);
+  color: rgb(var(--color-ink-100));
+  background: rgb(var(--color-ink-950));
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body { min-height: 100vh; }
+
+::selection {
+  color: rgb(var(--color-ink-950));
+  background: rgb(var(--color-amber-400));
+}
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid rgb(var(--color-amber-400));
+  outline-offset: var(--focus-ring-offset);
+}
+
+.hero-atmosphere {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 20%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 72% 32%, rgb(var(--color-amber-400) / 8%), transparent 28%),
+    radial-gradient(ellipse at 84% 66%, rgb(var(--color-teal-300) / 6%), transparent 32%);
+}
+
+.hero-image-frame {
+  background-image:
+    linear-gradient(rgb(var(--color-ink-500) / 8%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--color-ink-500) / 8%) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 45%, rgb(var(--color-teal-300) / 8%), transparent 58%);
+  background-size: var(--pattern-grid-size) var(--pattern-grid-size), var(--pattern-grid-size) var(--pattern-grid-size), auto;
+}
+
+@media (max-width: 639px) {
+  .hero-atmosphere { inset: 0 -45% 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
