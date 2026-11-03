@@ -100,14 +100,14 @@ export function Navbar() {
 
         <button
           ref={menuButtonRef}
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-control border border-ink-800 text-ink-300 transition-[border-color,color] duration-enter ease-enter active:translate-y-px hover:border-ink-500 hover:text-ink-100 focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 lg:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-control border border-ink-800 text-ink-300 transition-[transform,opacity] duration-enter ease-enter active:translate-y-px hover:border-ink-500 hover:text-ink-100 focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 lg:hidden"
           type="button"
           aria-controls="primary-navigation"
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? siteText.closeMenuLabel : siteText.openMenuLabel}
           onClick={() => setMobileOpen((open) => !open)}
         >
-          <span className="flex w-4 flex-col gap-1.5" aria-hidden="true">
+          <span className="flex w-4 flex-col gap-1" aria-hidden="true">
             <span className={`h-px w-full bg-current transition-transform duration-enter ${mobileOpen ? 'translate-y-1 rotate-45' : ''}`} />
             <span className={`h-px w-full bg-current transition-transform duration-enter ${mobileOpen ? '-translate-y-1 -rotate-45' : ''}`} />
           </span>
@@ -121,16 +121,16 @@ export function Navbar() {
           <ul className="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-2">
             {navigation.map((item) => {
               const isActive = activeSection === item.href.slice(1)
-              const isContact = item.href === '#contact'
+              const isPrimary = 'emphasis' in item && item.emphasis === 'primary'
               return (
                 <li key={item.href}>
                   <a
                     href={item.href}
                     aria-current={isActive ? 'location' : undefined}
-                    className={`flex min-h-11 items-center gap-2 rounded-control px-3.5 text-sm font-medium transition-[background-color,color] duration-enter ease-enter focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 ${
-                      isContact && isActive
+                    className={`flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-medium transition-[transform,opacity] duration-enter ease-enter focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400 ${
+                      isPrimary && isActive
                         ? 'border border-amber-400 bg-amber-400 text-ink-950'
-                        : isContact
+                        : isPrimary
                           ? 'border border-amber-400/80 text-amber-400 hover:bg-amber-400 hover:text-ink-950'
                           : isActive
                             ? 'bg-ink-900 text-amber-400'

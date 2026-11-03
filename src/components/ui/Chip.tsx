@@ -17,7 +17,7 @@ export interface ChipProps extends HTMLAttributes<HTMLSpanElement> {
 
 export function Chip({ children, tone = 'neutral', className = '', ...props }: ChipProps) {
   return (
-    <span className={`inline-flex min-h-8 items-center rounded-control border px-2.5 font-mono text-xs ${toneClasses[tone]} ${className}`} {...props}>
+    <span className={`inline-flex min-h-8 items-center rounded-control border px-3 font-mono text-xs ${toneClasses[tone]} ${className}`} {...props}>
       {children}
     </span>
   )

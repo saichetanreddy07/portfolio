@@ -49,3 +49,26 @@ body { min-height: 100vh; }
     transition-duration: 0.01ms !important;
   }
 }
+
+.project-dialog {
+  width: min(calc(100vw - (2 * var(--project-dialog-gutter))), var(--project-dialog-width));
+  max-height: var(--project-dialog-height);
+  margin: auto;
+  padding: 0;
+}
+
+.project-dialog::backdrop {
+  background: rgb(var(--color-ink-950) / 0.88);
+}
+
+@media (max-width: 48rem) {
+  .project-dialog {
+    bottom: 0;
+    top: auto;
+    width: 100vw;
+    max-height: var(--project-dialog-mobile-height);
+    margin: 0;
+    border-bottom: 0;
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  }
+}

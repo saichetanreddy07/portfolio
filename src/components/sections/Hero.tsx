@@ -1,7 +1,35 @@
-import { hero } from '../../data'
-import { Container } from '../ui/Container'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { hero, heroSocialLinks } from '../../data'
+import { ButtonLink, Container, TextLink } from '../ui'
+
+const HERO_WORD_INTERVAL_MS = 2800
+const HERO_WORD_TRANSITION_SECONDS = 0.18
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
 
 export function Hero() {
+  const [wordIndex, setWordIndex] = useState(0)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia(REDUCED_MOTION_QUERY).matches,
+  )
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(REDUCED_MOTION_QUERY)
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches)
+    updatePreference()
+    mediaQuery.addEventListener('change', updatePreference)
+    return () => mediaQuery.removeEventListener('change', updatePreference)
+  }, [])
+
+  useEffect(() => {
+    if (prefersReducedMotion || hero.rotatingWords.length < 2) return
+    const timer = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % hero.rotatingWords.length)
+    }, HERO_WORD_INTERVAL_MS)
+
+    return () => clearInterval(timer)
+  }, [prefersReducedMotion])
+
   return (
     <section
       id="home"
@@ -10,37 +38,67 @@ export function Hero() {
     >
       <Container className="w-full">
         <div className="w-full max-w-hero-copy text-left">
-          <p className="mb-6 font-mono text-xs font-medium uppercase tracking-hud text-teal-300 sm:text-sm">
-            <span className="mr-3 inline-block h-px w-6 align-middle bg-teal-300/80" aria-hidden="true" />
-            {hero.eyebrow}
-          </p>
           <h1
             id="hero-title"
-            className="break-words font-display text-hero-title font-bold tracking-display text-ink-100"
+            className="font-display text-hero-title font-bold tracking-display text-ink-100"
           >
-            {hero.name}
+            {hero.greeting}
           </h1>
-          <p className="mt-6 max-w-hero-lead font-display text-hero-lead font-medium tracking-lead text-ink-100">
-            {hero.tagline}
+
+          <h2 className="mt-4 max-w-hero-lead font-display text-hero-lead font-normal tracking-lead text-ink-300">
+            <span>{hero.rotatingPrefix} </span>
+            <span className="inline-block font-semibold text-amber-400">
+              <AnimatePresence initial={false} mode="wait">
+                <motion.span
+                  key={hero.rotatingWords[wordIndex]}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : HERO_WORD_TRANSITION_SECONDS, ease: 'easeOut' }}
+                  className="inline-block"
+                >
+                  {hero.rotatingWords[wordIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </h2>
+
+          <p className="mt-8 font-mono text-xs font-medium uppercase tracking-detail text-teal-300 sm:text-sm">
+            {hero.focus}
           </p>
-          <p className="mt-6 max-w-reading text-base leading-relaxed text-ink-300 sm:text-lg">
+
+          <p className="mt-4 max-w-reading text-base leading-relaxed text-ink-300 sm:text-lg">
             {hero.description}
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
-            {hero.links.map((item) => (
-              <a
-                key={item.label}
-                className="inline-flex min-h-11 items-center gap-2 rounded-control border border-ink-800 bg-ink-900/40 px-4 text-sm font-medium text-ink-100 transition-[border-color,background-color,color] duration-enter ease-enter hover:border-ink-600 hover:text-white active:translate-y-px focus-visible:outline-focus focus-visible:outline-offset-focus focus-visible:outline-amber-400"
-                href={item.href}
-                target={item.external ? '_blank' : undefined}
-                rel={item.external ? 'noreferrer' : undefined}
-                download={item.download}
-              >
-                <span>{item.label}</span>
-                <span className="text-ink-500" aria-hidden="true">↗</span>
-              </a>
-            ))}
+          <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
+            <ButtonLink to={hero.viewWorkHref} external size="lg">
+              {hero.viewWorkLabel}
+            </ButtonLink>
+
+            <ButtonLink
+              to={hero.resume.href}
+              download={hero.resume.download}
+              variant="secondary"
+              external
+            >
+              {hero.resume.label}
+            </ButtonLink>
+
+            <div className="flex items-center gap-5 sm:ml-2">
+              {heroSocialLinks.map((item) => (
+                <TextLink
+                  key={item.id}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="gap-1"
+                >
+                  <span>{item.label}</span>
+                  <span className="text-xs text-ink-500" aria-hidden="true">↗</span>
+                </TextLink>
+              ))}
+            </div>
           </div>
         </div>
       </Container>

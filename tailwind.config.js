@@ -51,10 +51,17 @@ export default {
         'hero-copy': 'var(--hero-copy-width)',
         'hero-lead': 'var(--hero-lead-width)',
         'hero-links': 'var(--hero-links-width)',
+        'project-dialog': 'var(--project-dialog-width)',
       },
+      maxHeight: {
+        'project-dialog': 'var(--project-dialog-height)',
+        'project-details': 'var(--project-details-height)',
+      },
+      opacity: { 'project-pattern': 'var(--project-pattern-opacity)' },
       minHeight: { hero: 'var(--hero-min-height)' },
       gridTemplateColumns: {
         about: 'var(--about-columns)',
+        project: 'var(--project-columns)',
       },
       letterSpacing: {
         hud: 'var(--tracking-hud)',

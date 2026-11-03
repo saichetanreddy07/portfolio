@@ -4,7 +4,7 @@ export const navigation = [
   { label: 'Projects', href: '#projects', index: '02' },
   { label: 'Loadout', href: '#skills', index: '03' },
   { label: 'Beyond code', href: '#beyond-code', index: '04' },
-  { label: 'Contact', href: '#contact', index: '05' },
+  { label: 'Contact', href: '#contact', index: '05', emphasis: 'primary' },
 ]
 
 export const siteText = {
@@ -15,7 +15,6 @@ export const siteText = {
   closeMenuLabel: 'Close navigation menu',
   skipToMainLabel: 'Skip to main content',
   socialNavigationLabel: 'Social links',
-  portfolioEyebrow: 'Portfolio',
 }
 
 export const contact = {
@@ -24,10 +23,10 @@ export const contact = {
 }
 
 export const socialLinks = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-chetan-reddy-a18b4624b/' },
-  { label: 'GitHub', href: 'https://github.com/saichetanreddy07' },
-  { label: 'Email', href: `mailto:${contact.email}` },
-]
+  { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-chetan-reddy-a18b4624b/' },
+  { id: 'github', label: 'GitHub', href: 'https://github.com/saichetanreddy07' },
+  { id: 'email', label: 'Email', href: `mailto:${contact.email}` },
+] as const
 
 export const footerText = {
   eyebrow: 'Next move',
@@ -38,22 +37,25 @@ export const footerText = {
 }
 
 export const hero = {
-  name: siteText.brandName,
-  eyebrow: siteText.portfolioEyebrow,
-  tagline: 'AI Engineer | Machine Learning | Generative AI',
+  greeting: "Hi, I'm Sai.",
+  rotatingPrefix: "I'm happiest when I'm",
+  rotatingWords: ['building.', 'exploring.', 'learning something new.'],
+  focus: 'AI Engineer • Machine Learning • Generative AI',
   description:
     'Recent B.Tech graduate in Computer Science (Artificial Intelligence) passionate about building intelligent applications using Machine Learning, Generative AI, and Data Analytics. I enjoy transforming complex problems into practical, scalable software solutions.',
-  links: [
-    { label: 'GitHub', href: 'https://github.com/saichetanreddy07', external: true },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-chetan-reddy-a18b4624b/', external: true },
-    {
-      label: 'Resume',
-      href: '/Sai_Chetan_Resume.pdf',
-      external: false,
-      download: 'Sai_Chetan_Resume.pdf',
-    },
-  ],
+  viewWorkLabel: 'View My Work',
+  viewWorkHref: '#projects',
+  socialLinkIds: ['github', 'linkedin'] as const,
+  resume: {
+    label: 'Resume',
+    href: '/Sai_Chetan_Resume.pdf',
+    download: 'Sai_Chetan_Resume.pdf',
+  },
 }
+
+export const heroSocialLinks = hero.socialLinkIds.flatMap((id) =>
+  socialLinks.filter((link) => link.id === id),
+)
 
 export const about = {
   eyebrow: 'About Me',
@@ -66,5 +68,18 @@ export const about = {
     { label: 'Location', value: 'Hyderabad, India' },
     { label: 'Graduation', value: '2026' },
     { label: 'Focus', value: 'AI / ML • Generative AI • Data Analytics' },
+  ],
+}
+
+export const skills = {
+  eyebrow: 'Skills / Loadout',
+  title: 'Skills',
+  categories: [
+    { name: 'AI / LLMs', items: ['RAG', 'SentenceTransformers', 'Phi-3', 'Ollama'] },
+    { name: 'ML', items: ['ARIMA', 'Prophet', 'Random Forest'] },
+    { name: 'Backend', items: ['FastAPI', 'SQLAlchemy'] },
+    { name: 'Data', items: ['Python ETL', 'SQL', 'Power BI'] },
+    { name: 'Databases', items: ['ChromaDB', 'PostgreSQL', 'MySQL'] },
+    { name: 'Tools', items: ['Gradio', 'Streamlit', 'React', 'TypeScript'] },
   ],
 }

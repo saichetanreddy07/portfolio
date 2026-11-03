@@ -24,6 +24,13 @@
   --hero-copy-width: 56rem;
   --hero-lead-width: 48rem;
   --hero-links-width: 36rem;
+  --project-dialog-width: 56rem;
+  --project-dialog-height: min(88dvh, 48rem);
+  --project-details-height: min(60dvh, 32rem);
+  --project-dialog-gutter: 24px;
+  --project-dialog-mobile-height: 90dvh;
+  --project-pattern-opacity: 0.07;
+  --project-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   --header-height: 4.5rem;
   --hero-min-height: min(46rem, calc(100svh - var(--header-height)));
   --hero-title-size: clamp(2.75rem, 7.5vw, 5.25rem);

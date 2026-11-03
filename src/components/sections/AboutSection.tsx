@@ -1,8 +1,5 @@
 import { about } from '../../data'
-import { Card } from '../ui/Card'
-import { Container } from '../ui/Container'
-import { Section } from '../ui/Section'
-import { SectionHeading } from '../ui/SectionHeading'
+import { Card, Container, Section, SectionHeading } from '../ui'
 
 export function AboutSection() {
   return (
@@ -13,7 +10,7 @@ export function AboutSection() {
       spacing="default"
     >
       <Container className="grid items-start gap-12 lg:grid-cols-about lg:gap-20">
-        <div className="text-left">
+        <div>
           <SectionHeading eyebrow={about.eyebrow} title={about.title} titleId="about-title" />
           <div className="mt-8 max-w-reading space-y-5 text-base leading-relaxed text-ink-300 sm:text-lg">
             {about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -22,7 +19,7 @@ export function AboutSection() {
 
         <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
           {about.details.map((detail, index) => (
-            <Card key={detail.label} className="relative min-h-24 p-6 sm:p-5 lg:p-6">
+            <Card key={detail.label} className="relative min-h-24 p-6">
               <span className="absolute right-5 top-5 font-mono text-xs text-ink-500" aria-hidden="true">
                 0{index + 1}
               </span>
