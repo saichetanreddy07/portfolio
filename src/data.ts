@@ -37,7 +37,7 @@ export const footerText = {
 }
 
 export const hero = {
-  greeting: "Hi, I'm Sai.",
+  greeting: "Hi, I'm Sai Chetan Reddy.",
   rotatingPrefix: "I'm happiest when I'm",
   rotatingWords: ['building.', 'exploring.', 'learning something new.'],
   focus: 'AI Engineer • Machine Learning • Generative AI',
@@ -81,5 +81,77 @@ export const skills = {
     { name: 'Data', items: ['Python ETL', 'SQL', 'Power BI'] },
     { name: 'Databases', items: ['ChromaDB', 'PostgreSQL', 'MySQL'] },
     { name: 'Tools', items: ['Gradio', 'Streamlit', 'React', 'TypeScript'] },
+  ],
+}
+
+export const beyondTheScreen = {
+  eyebrow: '04 / Beyond the Screen',
+  title: 'Beyond the Screen',
+  introduction:
+    'A few things that keep me curious, energized and inspired beyond building software.',
+  items: [
+    {
+      id: 'photography',
+      index: '01',
+      title: 'Photography',
+      tagline: 'Visual Stories & Framing',
+      description:
+        'Taking a camera on walks forces me to slow down and observe the subtle details of light, texture, and everyday life. It sharpens my design instincts and teaches me how composition and perspective shape human perception. Whether wandering through city streets or quiet nature trails, it is my favorite way to stay present.',
+      cue: 'Light, geometry & perspective',
+    },
+    {
+      id: 'wildlife-conservation',
+      index: '02',
+      title: 'Wildlife Conservation',
+      tagline: 'Biodiversity & Future Vision',
+      description:
+        "I've always been fascinated by nature's resilience—from my love for cats to how axolotls can regenerate complex neural and heart tissue. My long-term aspiration is to channel computer vision and machine learning into wildlife monitoring and habitat protection. Technology is at its best when it safeguards the natural world.",
+      cue: 'AI for habitat preservation',
+    },
+    {
+      id: 'cricket',
+      index: '03',
+      title: 'Cricket',
+      tagline: 'Discipline, Strategy & Composure',
+      description:
+        'Cricket is an enduring masterclass in patience, tactical anticipation, and adapting to momentum shifts over long spells. Bowling a consistent line or reading match pressure requires deep mental composure and focus. That same discipline and calm under pressure directly translates to how I approach software engineering.',
+      cue: 'Patience, pace & match strategy',
+    },
+  ],
+}
+
+export const beyondTheScreen = {
+  eyebrow: '04 / Beyond the Screen',
+  title: 'Beyond the Screen',
+  introduction:
+    'A few things that keep me curious, energized and inspired beyond building software.',
+  items: [
+    {
+      id: 'photography',
+      index: '01',
+      title: 'Photography',
+      tagline: 'Visual Stories & Framing',
+      description:
+        'Taking a camera on walks forces me to slow down and observe the subtle details of light, texture, and everyday life. It sharpens my design instincts and teaches me how composition and perspective shape human perception. Whether wandering through city streets or quiet nature trails, it is my favorite way to stay present.',
+      cue: 'Light, geometry & perspective',
+    },
+    {
+      id: 'wildlife-conservation',
+      index: '02',
+      title: 'Wildlife Conservation',
+      tagline: 'Biodiversity & Future Vision',
+      description:
+        "I've always been fascinated by nature's resilience—from my love for cats to how axolotls can regenerate complex neural and heart tissue. My long-term aspiration is to channel computer vision and machine learning into wildlife monitoring and habitat protection. Technology is at its best when it safeguards the natural world.",
+      cue: 'AI for habitat preservation',
+    },
+    {
+      id: 'cricket',
+      index: '03',
+      title: 'Cricket',
+      tagline: 'Discipline, Strategy & Composure',
+      description:
+        'Cricket is an enduring masterclass in patience, tactical anticipation, and adapting to momentum shifts over long spells. Bowling a consistent line or reading match pressure requires deep mental composure and focus. That same discipline and calm under pressure directly translates to how I approach software engineering.',
+      cue: 'Patience, pace & match strategy',
+    },
   ],
 }

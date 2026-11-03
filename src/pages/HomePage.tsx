@@ -2,6 +2,7 @@ import { Hero } from '../components/sections/Hero'
 import { AboutSection } from '../components/sections/AboutSection'
 import { SkillsSection } from '../components/sections/SkillsSection'
 import { ProjectsSection } from '../components/sections/ProjectsSection'
+import { BeyondTheScreenSection } from '../components/sections/BeyondTheScreenSection'
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <AboutSection />
       <ProjectsSection />
       <SkillsSection />
+      <BeyondTheScreenSection />
     </main>
   )
 }
