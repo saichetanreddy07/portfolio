@@ -25,7 +25,7 @@ export const contact = {
 export const socialLinks = [
   { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-chetan-reddy-a18b4624b/' },
   { id: 'github', label: 'GitHub', href: 'https://github.com/saichetanreddy07' },
-  { id: 'email', label: 'Email', href: `https://mail.google.com/mail/?view=cm&fs=1&to=${contact.email}` },
+  { id: 'email', label: 'Email', href: `mailto:${contact.email}` },
 ] as const
 
 export const footerText = {
