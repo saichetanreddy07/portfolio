@@ -22,21 +22,10 @@ export const contact = {
   availability: 'Open to AI/ML engineer, Data Analyst and software engineer roles.',
 }
 
-export const contactSection = {
-  eyebrow: '05 / Contact',
-  title: "Let's Build Something Meaningful",
-  introduction:
-    "If you're building something interesting, solving challenging problems, or simply want to connect, I'd love to hear from you.",
-  contactAction: 'Get in touch',
-  resumeAction: 'Download Resume',
-  resumeUrl: '/Sai_Chetan_Resume.pdf',
-  resumeDownload: 'Sai_Chetan_Resume.pdf',
-}
-
 export const socialLinks = [
   { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-chetan-reddy-a18b4624b/' },
   { id: 'github', label: 'GitHub', href: 'https://github.com/saichetanreddy07' },
-  { id: 'email', label: 'Email', href: `mailto:${contact.email}` },
+  { id: 'email', label: 'Email', href: `https://mail.google.com/mail/?view=cm&fs=1&to=${contact.email}` },
 ] as const
 
 export const footerText = {
