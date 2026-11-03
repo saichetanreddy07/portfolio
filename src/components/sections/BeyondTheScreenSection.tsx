@@ -1,6 +1,10 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { useRef } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { beyondTheScreen } from '../../data'
-import { Container, Section, SectionHeading } from '../ui'
+import { CarouselNav, Container, Section, SectionHeading } from '../ui'
+import { useCarousel } from '../../hooks/useCarousel'
+
+// ─── Icons ───────────────────────────────────────────────────────────────────
 
 function PhotographyIcon() {
   return (
@@ -61,24 +65,39 @@ function CricketIcon() {
   )
 }
 
+const ICONS = [PhotographyIcon, WildlifeIcon, CricketIcon]
+
+// Footer metadata labels per item (matched by index, keeps original card copy)
+const FOOTER_LEFT = ['Observation & Composition', 'Biodiversity & Neural Regeneration', 'Tactics & Composure']
+const FOOTER_CUE_CLASS = [
+  'font-mono text-xs text-teal-300', // photography
+  'inline-flex items-center rounded-control border border-teal-300/30 bg-teal-300/10 px-2.5 py-1 font-mono text-[11px] text-teal-300', // wildlife
+  'inline-flex items-center rounded-control border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 font-mono text-[11px] text-amber-400', // cricket
+]
+
+const SLIDE_DURATION = 0.28
+
 export function BeyondTheScreenSection() {
-  const shouldReduceMotion = useReducedMotion()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const items = beyondTheScreen.items
 
-  const motionProps = shouldReduceMotion
-    ? {
-        initial: { opacity: 0 },
-        whileInView: { opacity: 1 },
-        viewport: { once: true, amount: 0.15 },
-        transition: { duration: 0.25 },
-      }
-    : {
-        initial: { opacity: 0, y: 16 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, amount: 0.15 },
-        transition: { duration: 0.45, ease: 'easeOut' as const },
-      }
+  const { currentIndex, direction, shouldReduceMotion, goToPrev, goToNext, goToIndex, touchHandlers } =
+    useCarousel(items.length, containerRef)
 
-  const [photography, wildlife, cricket] = beyondTheScreen.items
+  const slideVariants = {
+    enter: (dir: number) => ({
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : dir > 0 ? 36 : -36,
+    }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir: number) => ({
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : dir > 0 ? -36 : 36,
+    }),
+  }
+
+  const item = items[currentIndex]
+  const Icon = ICONS[currentIndex] ?? ICONS[0]
 
   return (
     <Section
@@ -97,139 +116,84 @@ export function BeyondTheScreenSection() {
           className="text-left"
         />
 
-        {/* Engaging Editorial Layout with Varied Spacing */}
-        <div className="mt-14 space-y-8 sm:mt-16 sm:space-y-10">
-          {/* 1. Featured Spotlight: Photography */}
-          {photography && (
+        {/* Carousel */}
+        <div
+          ref={containerRef}
+          className="mt-14 sm:mt-16"
+          {...touchHandlers}
+        >
+          <AnimatePresence mode="wait" custom={direction}>
             <motion.article
-              {...motionProps}
+              key={item.id}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: SLIDE_DURATION, ease: 'easeOut' }}
+              aria-roledescription="slide"
+              aria-label={`${item.title} (${currentIndex + 1} of ${items.length})`}
               className="relative overflow-hidden rounded-panel border border-ink-800/80 bg-ink-900/40 p-8 sm:p-10 lg:p-12 transition-colors duration-enter hover:border-ink-700 text-left"
             >
               <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
-                {/* Left Metadata & Title */}
+                {/* Left: Icon, eyebrow, title */}
                 <div className="lg:col-span-5">
                   <div className="flex items-center gap-3">
                     <div className="flex h-11 w-11 items-center justify-center rounded-control border border-ink-800 bg-ink-950/80">
-                      <PhotographyIcon />
+                      <Icon />
                     </div>
-                    <div>
-                      <span className="font-mono text-xs uppercase tracking-wider text-teal-300">
-                        {photography.index} • {photography.tagline}
-                      </span>
-                    </div>
+                    <span className="font-mono text-xs uppercase tracking-wider text-teal-300">
+                      {item.index} • {item.tagline}
+                    </span>
                   </div>
 
                   <h3 className="mt-6 font-display text-3xl font-bold tracking-tight text-ink-100 sm:text-4xl">
-                    {photography.title}
+                    {item.title}
                   </h3>
 
-                  {/* Viewfinder Framing Graphic */}
-                  <div className="mt-6 hidden sm:flex items-center gap-2 text-ink-700 font-mono text-[11px]" aria-hidden="true">
-                    <span>[ 35mm f/1.8 ]</span>
-                    <span className="h-px w-12 bg-ink-800" />
-                    <span className="text-teal-300/80">ISO 100</span>
-                  </div>
+                  {/* Photography-specific viewfinder detail */}
+                  {currentIndex === 0 && (
+                    <div
+                      className="mt-6 hidden sm:flex items-center gap-2 text-ink-700 font-mono text-[11px]"
+                      aria-hidden="true"
+                    >
+                      <span>[ 35mm f/1.8 ]</span>
+                      <span className="h-px w-12 bg-ink-800" />
+                      <span className="text-teal-300/80">ISO 100</span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Right Description & Quote */}
+                {/* Right: description + footer cue */}
                 <div className="flex flex-col justify-between gap-6 lg:col-span-7">
                   <p className="text-base sm:text-lg leading-relaxed text-ink-300 font-normal">
-                    {photography.description}
+                    {item.description}
                   </p>
 
                   <div className="pt-4 border-t border-ink-800/60 flex items-center justify-between">
                     <span className="font-mono text-xs text-ink-500">
-                      Observation & Composition
+                      {FOOTER_LEFT[currentIndex]}
                     </span>
-                    <span className="font-mono text-xs text-teal-300">
-                      {photography.cue}
+                    <span className={FOOTER_CUE_CLASS[currentIndex]}>
+                      {item.cue}
                     </span>
                   </div>
                 </div>
               </div>
             </motion.article>
-          )}
+          </AnimatePresence>
 
-          {/* 2 & 3. Asymmetric Editorial Grid: Wildlife Conservation & Cricket */}
-          <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
-            {/* Wildlife Conservation (Wider column: 7 cols) */}
-            {wildlife && (
-              <motion.article
-                {...motionProps}
-                className="flex flex-col justify-between rounded-panel border border-ink-800/80 bg-ink-900/40 p-8 sm:p-10 transition-colors duration-enter hover:border-ink-700 lg:col-span-7 text-left"
-              >
-                <div>
-                  <div className="flex items-center justify-between border-b border-ink-800/60 pb-5">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-control border border-ink-800 bg-ink-950/80">
-                        <WildlifeIcon />
-                      </div>
-                      <span className="font-mono text-xs uppercase tracking-wider text-teal-300">
-                        {wildlife.index} • {wildlife.tagline}
-                      </span>
-                    </div>
-                    <span className="font-mono text-xs text-ink-500">Curiosity</span>
-                  </div>
-
-                  <h3 className="mt-6 font-display text-2xl font-bold tracking-tight text-ink-100 sm:text-3xl">
-                    {wildlife.title}
-                  </h3>
-
-                  <p className="mt-4 text-base leading-relaxed text-ink-300 font-normal">
-                    {wildlife.description}
-                  </p>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-ink-800/60 flex items-center justify-between">
-                  <span className="font-mono text-xs text-ink-500">
-                    Biodiversity & Neural Regeneration
-                  </span>
-                  <span className="inline-flex items-center rounded-control border border-teal-300/30 bg-teal-300/10 px-2.5 py-1 font-mono text-[11px] text-teal-300">
-                    {wildlife.cue}
-                  </span>
-                </div>
-              </motion.article>
-            )}
-
-            {/* Cricket (5 cols) */}
-            {cricket && (
-              <motion.article
-                {...motionProps}
-                className="flex flex-col justify-between rounded-panel border border-ink-800/80 bg-ink-900/40 p-8 sm:p-10 transition-colors duration-enter hover:border-ink-700 lg:col-span-5 text-left"
-              >
-                <div>
-                  <div className="flex items-center justify-between border-b border-ink-800/60 pb-5">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-control border border-ink-800 bg-ink-950/80">
-                        <CricketIcon />
-                      </div>
-                      <span className="font-mono text-xs uppercase tracking-wider text-teal-300">
-                        {cricket.index} • {cricket.tagline}
-                      </span>
-                    </div>
-                    <span className="font-mono text-xs text-ink-500">Patience</span>
-                  </div>
-
-                  <h3 className="mt-6 font-display text-2xl font-bold tracking-tight text-ink-100 sm:text-3xl">
-                    {cricket.title}
-                  </h3>
-
-                  <p className="mt-4 text-base leading-relaxed text-ink-300 font-normal">
-                    {cricket.description}
-                  </p>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-ink-800/60 flex items-center justify-between">
-                  <span className="font-mono text-xs text-ink-500">
-                    Tactics & Composure
-                  </span>
-                  <span className="inline-flex items-center rounded-control border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 font-mono text-[11px] text-amber-400">
-                    {cricket.cue}
-                  </span>
-                </div>
-              </motion.article>
-            )}
-          </div>
+          <CarouselNav
+            count={items.length}
+            currentIndex={currentIndex}
+            onPrev={goToPrev}
+            onNext={goToNext}
+            onGoTo={goToIndex}
+            ariaLabel="Beyond the Screen carousel navigation"
+            dotLabel={(i) => `Go to slide ${i}: ${items[i - 1]?.title ?? ''}`}
+            prevLabel="Previous interest"
+            nextLabel="Next interest"
+          />
         </div>
       </Container>
     </Section>

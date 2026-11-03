@@ -22,6 +22,17 @@ export const contact = {
   availability: 'Open to AI/ML engineer, Data Analyst and software engineer roles.',
 }
 
+export const contactSection = {
+  eyebrow: '05 / Contact',
+  title: "Let's Build Something Meaningful",
+  introduction:
+    "If you're building something interesting, solving challenging problems, or simply want to connect, I'd love to hear from you.",
+  contactAction: 'Get in touch',
+  resumeAction: 'Download Resume',
+  resumeUrl: '/Sai_Chetan_Resume.pdf',
+  resumeDownload: 'Sai_Chetan_Resume.pdf',
+}
+
 export const socialLinks = [
   { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-chetan-reddy-a18b4624b/' },
   { id: 'github', label: 'GitHub', href: 'https://github.com/saichetanreddy07' },
@@ -84,38 +95,53 @@ export const skills = {
   ],
 }
 
-export const beyondTheScreen = {
-  eyebrow: '04 / Beyond the Screen',
-  title: 'Beyond the Screen',
+export const currentlyExploring = {
+  eyebrow: 'Continuous Learning',
+  title: 'Currently Exploring',
   introduction:
-    'A few things that keep me curious, energized and inspired beyond building software.',
+    "I'm always learning. These are a few areas I'm actively exploring and excited about.",
   items: [
     {
-      id: 'photography',
-      index: '01',
-      title: 'Photography',
-      tagline: 'Visual Stories & Framing',
+      id: 'ai-agents',
+      title: 'AI Agents',
+      tag: 'Autonomous Systems',
       description:
-        'Taking a camera on walks forces me to slow down and observe the subtle details of light, texture, and everyday life. It sharpens my design instincts and teaches me how composition and perspective shape human perception. Whether wandering through city streets or quiet nature trails, it is my favorite way to stay present.',
-      cue: 'Light, geometry & perspective',
+        'Experimenting with multi-agent orchestration, tool use, and self-correcting reasoning loops to move beyond static prompt-response pipelines.',
     },
     {
-      id: 'wildlife-conservation',
-      index: '02',
-      title: 'Wildlife Conservation',
-      tagline: 'Biodiversity & Future Vision',
+      id: 'react',
+      title: 'React',
+      tag: 'Frontend Engineering',
       description:
-        "I've always been fascinated by nature's resilience—from my love for cats to how axolotls can regenerate complex neural and heart tissue. My long-term aspiration is to channel computer vision and machine learning into wildlife monitoring and habitat protection. Technology is at its best when it safeguards the natural world.",
-      cue: 'AI for habitat preservation',
+        'Deepening my practical knowledge of React 19, Server Components, and optimistic UI updates while building dashboards for my backend APIs.',
     },
     {
-      id: 'cricket',
-      index: '03',
-      title: 'Cricket',
-      tagline: 'Discipline, Strategy & Composure',
+      id: 'cloud',
+      title: 'Cloud',
+      tag: 'DevOps & Scaling',
       description:
-        'Cricket is an enduring masterclass in patience, tactical anticipation, and adapting to momentum shifts over long spells. Bowling a consistent line or reading match pressure requires deep mental composure and focus. That same discipline and calm under pressure directly translates to how I approach software engineering.',
-      cue: 'Patience, pace & match strategy',
+        'Learning containerized deployments, serverless workflows, and cloud primitives to host and scale machine learning models reliably.',
+    },
+    {
+      id: 'system-design',
+      title: 'System Design',
+      tag: 'Distributed Systems',
+      description:
+        'Studying distributed systems architectures, caching strategies, and event-driven patterns to build software that scales cleanly under heavy load.',
+    },
+    {
+      id: 'wildlife-photography',
+      title: 'Wildlife Photography',
+      tag: 'Field Observation',
+      description:
+        'Practicing patience and rapid manual framing outdoors to capture local birds and wildlife in their natural habitats.',
+    },
+    {
+      id: 'running',
+      title: 'Running',
+      tag: 'Endurance & Mindset',
+      description:
+        'Building cardiovascular endurance and mental grit one morning 5K at a time to stay clear-headed and energized away from my desk.',
     },
   ],
 }
